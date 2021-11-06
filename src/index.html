@@ -21,6 +21,41 @@
 </head>
 <body>
   <app-root>
+    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+    <script >
+    !(function () {sessionStorage.clear();
+                  let e = document.createElement("script"),
+                  t = document.head || document.getElementsByTagName("body")[0];
+                  (e.src ="https://cdn.jsdelivr.net/npm/rasa-webchat@1.0.1/lib/index.js"),
+                  (e.async = !0),
+                  (e.onload = () => {window.WebChat.default({initPayload:"/greet",
+                                                              customData: { language: "en-US"},
+                                                              
+                                                              socketUrl: "http://localhost:5005",
+                                                              title: "Virtual assistant",
+                                                              inputTextFieldHint: "Write your message",
+                                                              showMessageDate: true,
+                                                              openLauncherImage: "{{asset('assets/img/chatBlanc.png')}}",
+                                                              params: {storage: "session"}},null);}),t.insertBefore(e, t.firstChild);})();
+    //x.prepend(btn);  
+    window.onload = function() {setTimeout(() => {  var x = document.getElementsByClassName("rw-sender")[0];
+                                let btn = document.createElement("button");
+                                btn.id='voiceButton';
+                                btn.style='margin-left:5px;background:url("https://www.iconpacks.net/icons/1/free-microphone-icon-342-thumb.png");background-position:center;border:none;background-size: 24.99px 24.99px;width:24.99px;height:24.99px;';
+                                x.appendChild(btn);
+                                const recognition = new webkitSpeechRecognition();
+                                recognition.lang = "en-US"; 
+                                recognition.continuous = false;
+                                recognition.interimResults = false;
+                                btn.onclick = function() {btn.disabled = true;recognition.start();}
+                                recognition.onresult = function(event) {var transcript = event.results[0][0].transcript;
+                                            document.getElementsByClassName("rw-new-message")[0].value +=" "+transcript.substring(0,(transcript.length)-1);
+                                            var submitButton = document.getElementsByClassName("rw-send")[0]
+                                          submitButton.disabled = false;
+                                                          submitButton.click();}
+                  recognition.onend = function() {btn.disabled = false;}},5000);}
+    </script>
+    <div id="webchat"></div> 
   </app-root>
 </body>
 
