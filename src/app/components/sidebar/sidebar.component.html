@@ -1,0 +1,71 @@
+
+<div class="logo">
+    <a class="simple-text logo-mini">
+      <div class="logo-img">
+          <img src="./assets/img/bfi_logo.png"/>
+      </div>
+    </a>
+    <a  class="simple-text logo-normal">
+        Bfi
+    </a>
+</div>
+<div class="sidebar-wrapper">
+    <ul class="nav"  routerLinkActive="active">
+      <li class="nav-item" *ngIf="showUserBoard">
+       <a href="/dashboard" class="nav-link"> <i class="fas fa-chart-line"></i><b>Dashboard</b></a>
+      </li>
+
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/users" class="nav-link"  > <i class="fal fa-cogs"></i> <b>Users</b></a>
+       </li>
+
+       <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/clientsAdmin" class="nav-link"  > <i class="fal fa-cogs"></i> <b>Clients</b></a>
+       </li>
+
+      <li class="nav-item" *ngIf="showUserBoard">
+        <a href="/cards" class="nav-link"  > <i class="fas fa-id-card"></i> <b>Cards</b></a>
+       </li>
+    
+       <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/AccountsAdmin" class="nav-link"  > <i class="fal fa-cogs"></i> <b>Accounts</b></a>
+       </li>
+
+  <!-- <li class="nav-item">
+        <a href="/statistics" class="nav-link"  > <i class="fas fa-chart-area"></i><b>Statistics</b></a>
+       </li> -->
+       
+        <li class="nav-item" *ngIf="showUserBoard">
+          <a  class="nav-link"  ><i class="right fas fa-angle-left"(clicked)="changeText1=true" (mouseover)="changeText=true" (mouseout)="changeText=false"></i> <b>Transactions</b></a>
+          <ul style="list-style: none;">
+            <li class="nav-item" *ngIf="showUserBoard">
+              <a routerLink="transactions-consult" class="nav-link"  *ngIf="changeText" > <i class="far fa-circle nav-icon"></i> <b>Consult</b></a>
+             </li>
+             <li class="nav-item" *ngIf="showUserBoard">
+              <a routerLink="transactions" class="nav-link"  *ngIf="changeText" > <i class="fas fa-id-card"></i> <b>Create </b></a>
+          </li>
+
+          </ul>
+         </li>
+       <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/transactionsAdmin" class="nav-link"  ><i class="fal fa-credit-card"></i> <b>Transactions</b></a>
+       </li>
+       <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/cardsAdmin" class="nav-link"  > <i class="fal fa-cogs"></i> <b>Cards</b></a>
+       </li>
+       <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/loansAdmin" class="nav-link"  ><i class="fal fa-credit-card"></i> <b>Loans</b></a>
+       </li>
+       <!-- <li class="nav-item">
+        <a href="/messages" class="nav-link"  > <i class="far fa-comments"></i> <b>Messages</b></a>
+       </li> -->
+       <li class="nav-item" *ngIf="showUserBoard">
+        <a href="/loans" class="nav-link"  > <i class="fad fa-credit-card"></i><b>Loans</b></a>
+       </li>
+       <!-- <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/settings" class="nav-link"  > <i class="fal fa-cogs"></i> <b>Settings</b></a>
+       </li> -->
+
+
+
+

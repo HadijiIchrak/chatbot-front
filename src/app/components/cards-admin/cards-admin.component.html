@@ -1,0 +1,65 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Cards</h4>
+        </div>
+        <div class="card-body">
+
+<!-- Cards table -->
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add card</a>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="text-primary">
+            <tr>
+              <th scope="col" hidden>#</th>
+              <th >Credit card number</th>
+              <th>account number</th>
+              <th>owner name</th>
+              <th>min balance</th>
+              <th>Type</th>
+              <th></th>
+            
+            </tr>
+          </thead>
+          <tbody>
+            <!-- | searchFilter: searchTerm; index as i  missing !!!!  -->
+              <tr *ngFor="let c of cards | paginate: { itemsPerPage: 10, currentPage: p}">
+                <td scope="row" hidden>{{ i + 1 }}</td>  
+                <td>{{c.credit_card_number}}</td>
+                <td>{{c.account.accNumber }} </td>
+                <td>{{c.account.client.firstName }} {{c.account.client.lastName }}</td>
+                <td>{{c.min_balance}}</td>
+                <td>{{c.type}}</td> 
+                <td style="white-space: nowrap">
+                    <a routerLink="edit/{{c.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                    <button (click)="deleteCard(c.id)" class="btn btn-sm btn-danger btn-delete-card" >
+                        <!-- <span *ngIf="card.isDeleting" class="spinner-border spinner-border-sm"></span> -->
+                        <span>Delete</span>
+                    </button>
+                </td>
+               
+                
+              </tr>
+          </tbody>
+      </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+    </div>
+
+   
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+

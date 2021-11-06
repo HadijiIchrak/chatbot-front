@@ -1,0 +1,88 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title" *ngIf="isAddMode"> Add card</h4>
+          <h4 class="card-title" *ngIf="!isAddMode"> Edit card</h4>
+
+        </div>
+        <div class="card-body">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+
+        <div class="form-group col-5">
+            <label>Credit Card number</label>
+            <input type="text" formControlName="credit_card_number" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.credit_card_number.errors }" />
+            <div *ngIf="submitted && f.credit_card_number.errors" class="invalid-feedback">
+                <div *ngIf="f.firstName.errors.required">Credit Card number is required</div>
+            </div>
+        </div>
+        <div class="form-group col-5">
+            <label>Min balance</label>
+            <input type="number" formControlName="min_balance" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.min_balance.errors }" />
+            <div *ngIf="submitted && f.min_balance.errors" class="invalid-feedback">
+                <div *ngIf="f.min_balance.errors.required">Min balance is required</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-7">
+            <label>Type</label>
+            <input type="text" formControlName="type" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.type.errors }" />
+            <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
+                <div *ngIf="f.type.errors.required">Type is required</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div *ngIf="isAddMode" class="form-row">
+        <div class="form-group col-7">
+            <label>Account </label>
+            <select name="account_id" 
+                    id="account_id" 
+                    class="form-control"
+                    [(ngModel)]="account_id" formControlName="account_id" >
+                            <option [ngValue]="null" disabled>Select account number</option>
+                            <option *ngFor="let account of accounts" [value]="account.id" >{{ account.accNumber }}</option>
+            </select>
+            <div *ngIf="submitted && f.account_id.errors" class="invalid-feedback">
+                <div *ngIf="f.account_id.errors.required">account is required</div>
+            </div>
+
+
+            <!-- <input type="text" formControlName="account_id" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.account_id.errors }" />
+            <div *ngIf="submitted && f.account_id.errors" class="invalid-feedback">
+                <div *ngIf="f.account_id.errors.required">Account is required</div>
+            </div> -->
+        </div>
+
+    </div>
+    
+
+    <div class="form-group">
+        <button  class="btn btn-primary">
+            Save
+        </button>
+        <a routerLink="/cardsAdmin" class="btn btn-link">Cancel</a>
+    </div>
+</form>
+
+
+   
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,70 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Accounts</h4>
+        </div>
+        <div class="card-body">
+
+<!-- Cards table -->
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add account</a>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="text-primary">
+            <tr>
+              <th scope="col" hidden>#</th>
+              <th >Account number</th>
+              <th >Type</th>
+              <th >Client</th>
+              <th >Date of openning</th>
+              <th >Balance</th>
+              <th >Currency</th>
+              <th >Agency</th>
+              <th></th>
+            
+            </tr>
+          </thead>
+          <tbody>
+            <!-- | searchFilter: searchTerm; index as i  missing !!!!  -->
+              <tr *ngFor="let a of accounts | paginate: { itemsPerPage: 10, currentPage: p}">
+                <td scope="row" hidden>{{ i + 1 }}</td>  
+                <td>{{a.accNumber}}</td>
+                <td>{{a.type}}</td>
+                <td>{{a.client.firstName}} {{a.client.lastName}}</td>
+                <!-- <td>{{c.account.accNumber }} </td>
+                <td>{{c.account.client.firstName }} {{c.account.client.lastName }}</td> -->
+                <td>{{a.createdAt}}</td>
+                <td>{{a.balance}}</td> 
+                <td>{{a.currency}}</td> 
+                <td>{{a.client.agency.name}}</td> 
+                <td style="white-space: nowrap">
+                    <a routerLink="edit/{{a.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                    <button (click)="deleteAccount(a.id)" class="btn btn-sm btn-danger btn-delete-card" >
+                        <span>Delete</span>
+                    </button>
+                </td>
+               
+                
+              </tr>
+          </tbody>
+      </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+    </div>
+
+   
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,81 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Clients</h4>
+        </div>
+        <div class="card-body">
+
+<!-- Users table -->
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add Client</a>
+<form>
+  <div class="input-group no-border">
+
+    <input class="form-control" type="text" name="searchTerm" placeholder="Search by email"
+    [(ngModel)]="searchTerm" (input)="search($event.target.value)" >
+    <div class="input-group-append">
+      <div class="input-group-text">
+        <i class="nc-icon nc-zoom-split"></i>
+      </div>
+    </div>
+  </div>
+</form>
+
+        
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead class="text-primary">
+              <tr>
+                <th scope="col" hidden>#</th>
+                <th>Username</th>
+                <th>Firstname</th>
+                <th>LastName</th>
+                <th>Email</th>
+                <th>Agency</th>
+                <th>Address</th>
+                <th></th>
+               
+           
+              </tr>
+            </thead>
+
+            
+
+            <tbody>
+                <tr *ngFor="let user of users | paginate: { itemsPerPage: 10, currentPage: p}">
+                  <td scope="row" hidden>{{ i + 1 }}</td>  
+                  <td>{{user.username}}</td>
+                  <td>{{user.firstName}}</td>
+                  <td>{{user.lastName}}</td>
+                  <td>{{user.email}}</td>
+                  <td>{{user.agency.name}}</td>
+                  <td>  {{user.address.city}}</td>
+                  <td style="white-space: nowrap">
+                    <a routerLink="edit/{{user.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                    <button (click)="deleteClient(user.id)" class="btn btn-sm btn-danger btn-delete-card" >
+                        <span>Delete</span>
+                    </button>
+                </td>
+                  
+
+                </tr>
+            </tbody>
+        </table>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+    </div>
+
+   
+        </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+

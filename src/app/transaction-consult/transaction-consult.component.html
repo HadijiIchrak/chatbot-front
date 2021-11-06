@@ -1,0 +1,75 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <!-- Select account dropbox -->
+        <form  (ngSubmit)="onSub()"  [formGroup]="accountForm">
+        <!-- Dropbox -->
+        <div class="form-group">
+          <label for="account_id">Account number</label>
+          <select 
+              name="account_id" 
+              id="account_id" 
+              class="form-control"
+              [(ngModel)]="account" formControlName="account" 
+              >
+              <option [ngValue]="null" disabled>Select account number</option>
+              <option *ngFor="let account of accounts" [value]="account.id" >{{ account.accNumber }}</option>
+          </select>
+      </div>
+
+</form>
+
+      <!-- Transactions history table -->
+      <form>
+        <div class="input-group no-border">
+    
+          <input class="form-control" type="date" name="searchTerm" placeholder="Search by date"
+          [(ngModel)]="searchTerm" (input)="search($event.target.value)" >
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <i class="nc-icon nc-zoom-split"></i>
+            </div>
+          </div>
+        </div>
+      </form>
+
+
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="text-primary">
+            <tr>
+              <th scope="col" hidden>#</th>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Category</th>
+              <th>Amount</th>
+              <th>Currency</th>
+            
+            </tr>
+          </thead>
+          <tbody>
+            <!-- | searchFilter: searchTerm; index as i  missing !!!!  -->
+              <tr *ngFor="let t of transactions | paginate: { itemsPerPage: 10, currentPage: p}">
+                <td scope="row" hidden>{{ i + 1 }}</td>
+                <td>{{t.createdAt| date: 'dd/MM/yyyy HH:mm'}}</td>
+                <td>{{t.type}}</td>
+                <td>{{t.category.name}}</td>
+                <td>{{t.amount}}</td>
+                <td>{{t.currency}}</td> 
+               
+              </tr>
+          </tbody>
+      </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+    </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

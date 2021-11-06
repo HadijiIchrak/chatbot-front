@@ -1,0 +1,58 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Loans</h4>
+        </div>
+        <div class="card-body">
+
+<!-- Cards table -->
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add loan</a>
+
+<div class="table-responsive">
+    <table class="table">
+      <thead class="text-primary">
+        <tr>
+          <th scope="col" hidden>#</th>
+          <th>Account number</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Begin Date</th>
+          <th>duration</th>
+          <th></th>
+        
+        </tr>
+      </thead>
+      <tbody>
+        <!-- | searchFilter: searchTerm; index as i  missing !!!!  -->
+          <tr *ngFor="let l of loans | paginate: { itemsPerPage: 10, currentPage: p}">
+            <td scope="row" hidden>{{ i + 1 }}</td>
+            <td>{{l.account.accNumber}}</td>
+            <td>{{l.type}}</td>
+            <td>{{l.amount }} </td>
+            <td>{{l.beginDate}}</td>
+            <td>{{l.duration}}</td> 
+            <td style="white-space: nowrap">
+              <a routerLink="edit/{{l.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+              <button (click)="deleteLoan(l.id)" class="btn btn-sm btn-danger btn-delete-loan" >
+                  <!-- <span *ngIf="card.isDeleting" class="spinner-border spinner-border-sm"></span> -->
+                  <span>Delete</span>
+              </button>
+          </td>
+           
+          </tr>
+      </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+</div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

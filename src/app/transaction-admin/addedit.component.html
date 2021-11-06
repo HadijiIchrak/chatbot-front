@@ -1,0 +1,131 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title" *ngIf="isAddMode"> Add Transaction</h4>
+
+        </div>
+        <div class="card-body">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+
+
+        <div class="form-group col-5">
+            <label>From account number</label>
+            <select name="from_account_number" 
+            id="from_account_number" 
+            class="form-control"
+            [(ngModel)]="from_account_number" formControlName="from_account_number" >
+                    <option [ngValue]="null" disabled>Select account number</option>
+                    <option *ngFor="let account of accounts" [value]="account.accNumber" >{{ account.accNumber }}</option>
+            </select>
+                <div *ngIf="submitted && f.from_account_number.errors" class="invalid-feedback">
+                <div *ngIf="f.from_account_number.errors.required">From account number is required</div>
+            </div>
+        </div>
+
+        <!-- To account number -->
+        <div class="form-group col-5">
+            <label>To account number</label>
+            <select name="to_account_number" 
+            id="to_account_number" 
+            class="form-control"
+            [(ngModel)]="to_account_number" formControlName="to_account_number" >
+                    <option [ngValue]="null" disabled>Select account number</option>
+                    <option *ngFor="let account of accounts" [value]="account.accNumber" >{{ account.accNumber }}</option>
+            </select>
+                <div *ngIf="submitted && f.to_account_number.errors" class="invalid-feedback">
+                <div *ngIf="f.to_account_number.errors.required">To account number is required</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+
+            <!-- Type -->
+    <div class="form-group col-5">
+        <label>Type</label>
+        <select formControlName="type" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.type.errors }">
+            <option value=""></option>
+            <option value="withdrawal">Withdrawal</option>
+            <option value="deposit">Deposit</option>
+        </select>
+        <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
+            <div *ngIf="f.type.errors.required">Type is required</div>
+        </div>
+    </div>
+ <!-- Category -->
+ <div class="form-group col-5">
+    <label>Category </label>
+    <select name="category_id"
+    class="form-control"
+    [(ngModel)]="category_id" 
+    formControlName="category_id" >
+      <option value="">---Please select a category---</option>
+     <option *ngFor="let c of categories" value="{{c.id}}" >
+       {{c.name}}
+      </option>
+      </select>
+  </div>
+    </div>
+
+    <div class="form-row">
+        <!-- Amount -->
+
+        <div class="form-group col-5">
+            <label>Amount</label>
+            <input type="number" formControlName="amount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.amount.errors }" />
+            <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
+                <div *ngIf="f.amount.errors.required">Amount is required</div>
+            </div>
+        </div>
+
+        <!-- Currency -->
+        <!-- <div class="form-group col-5">
+            <label>currency</label>
+            <select class="currency" [(ngModel)]="form.currency" name="currency" >
+              <option value="">---Please select a currency---</option>
+              <option value="{{currency.text}}" *ngFor="let currency of CurrencyList">{{currency.text}}</option>
+            </select>
+        </div> -->
+
+        <div class="form-group col-5">
+            <label>Currency </label>
+            <select name="currency"
+            class="form-control"
+            [(ngModel)]="currency" 
+            formControlName="currency" >
+              <option value="">---Please select a Currency---</option>
+             <option value="{{currency.text}}" *ngFor="let currency of CurrencyList"  >
+               {{currency.text}}
+              </option>
+              </select>
+          </div>
+    
+    </div>
+
+    <div class="form-group">
+        <button  class="btn btn-primary">
+            Save
+        </button>
+        <a routerLink="/transactionsAdmin" class="btn btn-link">Cancel</a>
+    </div>
+</form>
+
+
+   
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+

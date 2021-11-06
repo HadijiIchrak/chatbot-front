@@ -1,0 +1,77 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title" *ngIf="isAddMode"> Add Loan</h4>
+          <h4 class="card-title" *ngIf="!isAddMode"> Edit Loan</h4>
+
+        </div>
+        <div class="card-body">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- Account -->
+
+    <div class="form-group col-5">
+        <label>Account</label>
+        <select name="account_id" 
+        id="account_id" 
+        class="form-control"
+        [(ngModel)]="account_id" formControlName="account_id" >
+                <option [ngValue]="null" disabled>Select account number</option>
+                <option *ngFor="let account of accounts" [value]="account.id" >{{ account.accNumber }}</option>
+        </select>
+  
+    </div>
+
+  
+    <div class="form-row">
+           <!-- type -->
+           <div class="form-group col-7">
+            <label>Type</label>
+            <input type="text" formControlName="type" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.type.errors }" />
+           
+        </div>
+<!-- amount -->
+        <div class="form-group col-5">
+            <label>Amount</label>
+            <input type="number" formControlName="amount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.amount.errors }" />
+        </div>
+<!-- beginDate -->
+        <div class="form-group col-5">
+            <label>beginDate</label>
+            <input type="date" formControlName="beginDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.beginDate.errors }" />
+        </div>
+
+        <!-- Duration -->
+    <div class="form-group col-5">
+        <label>Duration</label>
+        <input type="duration" formControlName="duration" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.beginDate.errors }" />
+    </div>
+    </div>
+
+
+    <div class="form-group">
+        <button  class="btn btn-primary">
+            Save
+        </button>
+        <a routerLink="/loansAdmin" class="btn btn-link">Cancel</a>
+    </div>
+</form>
+
+
+   
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+

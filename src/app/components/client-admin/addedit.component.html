@@ -1,0 +1,245 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+         
+
+
+            <!-- <form name="form" (ngSubmit)=" addClient()" novalidate>
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div >
+                    <label>First Name</label>
+                    <input type="text"  name="firstName"  [(ngModel)]="form.firstName" class="form-control" placeholder="First Name">
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <div >
+                    <label>Last Name</label>
+                    <input type="text"  name="lastName"  [(ngModel)]="form.lastName" required #lastName="ngModel" class="form-control" placeholder="Last Name">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div >
+                    <label>Username</label>
+                    <input type="text"  name="username"  [(ngModel)]="form.username" required #username="ngModel" class="form-control" placeholder="Username">
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <div >
+                    <label>Password</label>
+                    <input type="password"  name="password"  [(ngModel)]="form.password" required #password="ngModel" class="form-control" placeholder="Password">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div >
+                    <label>Email</label>
+                    <input type="text"  name="email"  [(ngModel)]="form.email" required #email="ngModel" class="form-control" placeholder="Email" >
+                  </div>
+                </div>
+              </div>
+    
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div >
+                    <label>street</label>
+                    <input type="text"  name="street"  [(ngModel)]="form.street" required #street="ngModel" class="form-control" placeholder="Street">
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <div >
+                    <label>suite</label>
+                    <input type="text"  name="suite"  [(ngModel)]="form.suite" required #suite="ngModel" class="form-control" placeholder="suite">
+                  </div>
+                </div>
+              </div>       
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div >
+                    <label>City</label>
+                    <input type="text"  name="city"  [(ngModel)]="form.city" required #city="ngModel" class="form-control" placeholder="city">
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <div>
+                    <label>zip code</label>
+                    <input type="text"  name="zipcode"  [(ngModel)]="form.zipcode" required #zipcode="ngModel" class="form-control" placeholder="zip code">
+                  </div>
+                </div>
+              </div>    
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div >
+                    <label>Phone</label>
+                    <input type="text"  name="phone"  [(ngModel)]="form.phone" required #phone="ngModel" class="form-control" placeholder="phone">
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+
+
+                  <div >
+                    <label>Agency </label>
+                    <select class="form-control" [(ngModel)]="form.agency_id" name="agency_id">
+                      <option value="">---Please select an agency---</option>
+                     <option *ngFor="let a of agencies" value="{{a.id}}" >
+                       {{a.name}}
+                      </option>
+                      </select>
+                  </div>
+
+
+                </div>
+              </div>   
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div >
+                    <label>Joining date</label>
+                    <input type="date"  name="joining_date"  [(ngModel)]="form.joining_date" required #joining_date="ngModel" class="form-control" placeholder="joining date">
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <div >
+                    <label>Birth Date </label>
+                    <input type="date"  name="birth_date"  [(ngModel)]="form.birth_date" required #birth_date="ngModel" class="form-control" placeholder="Birth date">
+                  </div>
+                </div>
+              </div>  
+    
+              <div class="row">
+                <div class="update ml-auto mr-auto">
+                  <button type="submit" class="btn btn-primary btn-round">ADD</button>
+                </div>
+              </div>
+    
+            </form> -->
+               <div class="card-body">
+            <form name="form" (ngSubmit)="onSubmit()" #f="ngForm" novalidate>
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div >
+                    <label>First Name</label>
+                    <input type="text"  name="firstName"  [(ngModel)]="form.firstName" required #firstName="ngModel" class="form-control" placeholder="First Name">
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <div >
+                    <label>Last Name</label>
+                    <input type="text"  name="lastName"  [(ngModel)]="form.lastName" required #lastName="ngModel" class="form-control" placeholder="Last Name">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div >
+                    <label>Username</label>
+                    <input type="text"  name="username"  [(ngModel)]="form.username" required #username="ngModel" class="form-control" placeholder="Username">
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <div >
+                    <label>Password</label>
+                    <input type="password"  name="password"  [(ngModel)]="form.password" required #password="ngModel" class="form-control" placeholder="Password">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div >
+                    <label>Email</label>
+                    <input type="text"  name="email"  [(ngModel)]="form.email" required #email="ngModel" class="form-control" placeholder="Email" >
+                  </div>
+                </div>
+              </div>
+    
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div >
+                    <label>street</label>
+                    <input type="text"  name="street"  [(ngModel)]="form.street" required #street="ngModel" class="form-control" placeholder="Street">
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <div >
+                    <label>suite</label>
+                    <input type="text"  name="suite"  [(ngModel)]="form.suite" required #suite="ngModel" class="form-control" placeholder="suite">
+                  </div>
+                </div>
+              </div>       
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div >
+                    <label>City</label>
+                    <input type="text"  name="city"  [(ngModel)]="form.city" required #city="ngModel" class="form-control" placeholder="city">
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <div>
+                    <label>zip code</label>
+                    <input type="text"  name="zipcode"  [(ngModel)]="form.zipcode" required #zipcode="ngModel" class="form-control" placeholder="zip code">
+                  </div>
+                </div>
+              </div>    
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div >
+                    <label>Phone</label>
+                    <input type="text"  name="phone"  [(ngModel)]="form.phone" required #phone="ngModel" class="form-control" placeholder="phone">
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+
+
+                  <div >
+                    <label>Agency </label>
+                    <select class="form-control" [(ngModel)]="form.agency_id" name="agency_id">
+                      <option value="">---Please select an agency---</option>
+                     <option *ngFor="let a of agencies" value="{{a.id}}" >
+                       {{a.name}}
+                      </option>
+                      </select>
+                  </div>
+
+
+                </div>
+              </div>   
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div >
+                    <label>Joining date</label>
+                    <input type="date"  name="joining_date"  [(ngModel)]="form.joining_date" required #joining_date="ngModel" class="form-control" placeholder="joining date">
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <div >
+                    <label>Birth Date </label>
+                    <input type="date"  name="birth_date"  [(ngModel)]="form.birth_date" required #birth_date="ngModel" class="form-control" placeholder="Birth date">
+                  </div>
+                </div>
+              </div>  
+    
+              <div class="row">
+                <div class="update ml-auto mr-auto">
+                  <button type="submit" class="btn btn-primary btn-round">ADD</button>
+                </div>
+              </div>
+    
+            </form>
+          </div>
+
+     
+
+            
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

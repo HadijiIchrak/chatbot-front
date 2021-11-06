@@ -1,0 +1,140 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+
+    <!--  -->
+    <div  class="col-sm-7">
+      <div class="card card-user">
+        <div class="card-header">
+          <h5 class="card-title">Update Profile</h5>
+        </div>
+      
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="updateUser()">
+           
+            <div class="form-row">
+                   <!-- First Name -->
+                   <div class="form-group col-7">
+                    <label>First Name</label>
+                  
+                    <input type="text" formControlName="firstName" class="form-control" name="firstName" placeholder="{{user.firstName}}" />  
+
+                </div>
+                   <!-- Last Name -->
+                <div class="form-group col-5">
+                    <label>Last Name</label>
+                    <input type="text" formControlName="lastName" class="form-control" name="lastName"  placeholder="{{user.lastName}}"/>
+                </div>
+            </div>
+
+            <div class="form-row">
+              <!-- Username -->
+              <div class="form-group col-7">
+               <label>Username</label>
+               <input type="text" formControlName="username" class="form-control" name="username" placeholder="{{user.username}}"  />  
+           </div>
+              <!-- Password -->
+           <div class="form-group col-5">
+               <label>Password</label>
+               <input type="password" formControlName="password" class="form-control" name="password" placeholder="{{user.password}}"  />
+           </div>
+       </div>  
+
+       <div class="form-row">
+        <!-- Phone -->
+        <div class="form-group col-7">
+         <label>Phone</label>
+          <input type="text" formControlName="phone" class="form-control" name="phone" placeholder="{{user.phone}}" />  
+        </div>
+        <!-- Birth Date -->
+        <div class="form-group col-5">
+          <label>Birth date</label>
+           <input type="date" formControlName="birth_date" class="form-control"  placeholder="{{user.birth_date}}"/>  
+         </div>
+      </div>
+
+<!-- Address fields -->
+<br>
+
+<p class="card-title">Address</p>
+
+        <div class="form-row">
+        <!-- Street -->
+        <div class="form-group col-6">
+         <label>Street</label>
+          <input type="text" formControlName="street" class="form-control" name="street"  value="{{user.address.street}}" />  
+        </div>
+        <!-- Suite -->
+        <div class="form-group col-6">
+          <label>Suite</label>
+           <input type="text" formControlName="suite" class="form-control" name="suite" value="{{user.address.suite}}"/>  
+         </div>
+      </div>
+      <div class="form-row">
+        <!-- City -->
+        <div class="form-group col-6">
+         <label>city</label>
+          <input type="text" formControlName="city" class="form-control" name="city" value="{{user.address.city}}" />  
+        </div>
+        <!-- zip code -->
+        <div class="form-group col-6">
+          <label>zip code</label>
+           <input type="number" formControlName="zipcode" class="form-control" name="zipcode" value="{{user.address.zipcode}}" />  
+         </div>
+      </div>
+      
+      <div class="form-group">
+        <button  type="submit" class="btn btn-primary">
+            Save
+        </button>
+    </div>
+
+        </form>
+
+       
+        </div>
+      </div>
+  </div>
+
+
+
+
+
+
+
+    
+   
+
+    <!--  -->
+    <div class="col-md-4">
+      <div class="card card-user">
+        <div class="image">
+
+        </div>
+        <div class="card-body">
+          <div class="author">
+            <a href="#">
+              <img class="avatar border-gray" src="../assets/img/profil.png" alt="...">
+              <h5 class="title">       {{ user.firstName }}       {{ user.lastName }}</h5>
+            </a>
+            <p class="description">
+              Username : {{ user.username }}   
+            </p>
+            <p class="description">
+              Agency : {{ user.agency.name }}   
+            </p>
+          </div>
+          <p class="description text-center">
+            Email Address :       {{ user.email }}
+            <br>
+          </p>
+          <p class="description text-center">
+            joined since   :       {{ user.createdAt| date }}
+            <br>
+          </p>
+   
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Cards</h4>
+        </div>
+        <div class="card-body">
+                  <!-- Select account dropbox -->
+        <form  (ngSubmit)="onSub()"  [formGroup]="accountForm">
+          <!-- Dropbox -->
+          <div class="form-group">
+            <label for="account_id">Account number</label>
+            <select 
+                name="account_id" 
+                id="account_id" 
+                class="form-control"
+                [(ngModel)]="account" formControlName="account" 
+                >
+                <option [ngValue]="null" disabled>Select account number</option>
+                <option *ngFor="let account of accounts" [value]="account.id" >{{ account.accNumber }}</option>
+            </select>
+        </div>
+  
+  </form>
+<!-- Cards table -->
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="text-primary">
+            <tr>
+              <th scope="col" hidden>#</th>
+              <th>Credit card number</th>
+              <th>owner name</th>
+              <th>min balance</th>
+              <th>Type</th>
+            
+            </tr>
+          </thead>
+          <tbody>
+            <!-- | searchFilter: searchTerm; index as i  missing !!!!  -->
+              <tr *ngFor="let c of cards | paginate: { itemsPerPage: 10, currentPage: p}">
+                <td scope="row" hidden>{{ i + 1 }}</td>
+                <td>{{c.credit_card_number}}</td>
+                <td>{{c.account.client.firstName }} {{c.account.client.lastName }}</td>
+                <td>{{c.min_balance}}</td>
+                <td>{{c.type}}</td> 
+               
+              </tr>
+          </tbody>
+      </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+    </div>
+
+   
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
